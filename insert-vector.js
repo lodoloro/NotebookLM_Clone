@@ -22,7 +22,6 @@ async function createEmbedding(text) {
 
 async function insert() {
 
-    const text = "The company uses Node.js and Ollama for AI development.";
 
     const vector = await createEmbedding(text);
 

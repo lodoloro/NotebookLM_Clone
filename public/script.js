@@ -38,22 +38,6 @@ const bubble = addMessage("assistant", "");
 
 await typeMessage(bubble, data.answer);
 
-if(data.sources && data.sources.length){
-
-    const sourceBox = document.createElement("div");
-
-    sourceBox.className = "sources";
-
-    sourceBox.innerHTML =
-        "<strong>Sources</strong><br>" +
-        data.sources
-            .map(file => `📄 ${file}`)
-            .join("<br>");
-
-    bubble.parentElement.appendChild(sourceBox);
-
-}
-
 }
 
 function addMessage(role, text){
@@ -282,6 +266,18 @@ document.addEventListener("drop", (e) => {
 
 });
 
+document.getElementById("question").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter" && !event.shiftKey) {
+
+        event.preventDefault();
+
+        sendQuestion();
+
+    }
+
+});
+
 function setUploadStatus(text) {
     document.getElementById("uploadStatus").textContent = text;
 }
@@ -291,3 +287,4 @@ loadDocuments();
 fetch("/new-chat", {
     method: "POST"
 });
+

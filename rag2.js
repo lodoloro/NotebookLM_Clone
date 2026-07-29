@@ -44,6 +44,8 @@ const questionVector = await createEmbedding(retrievalQuery);
         .map(result => result.payload.text)
         .join("\n\n");
 
+        console.log(context);
+
         const conversation = history
     .map(msg => `${msg.role}: ${msg.content}`)
     .join("\n");
@@ -64,26 +66,30 @@ console.log(question);
             model: "llama3.2:latest",
             stream: false,
 prompt: `
-You are Nero AI.
+You are Nero AI, a helpful assistant.
 
-Continue the conversation naturally.
+Use the previous conversation only as background context.
+Do not mention the conversation history, previous messages, or phrases like:
+- "as far as I remember"
+- "you mentioned earlier"
+- "based on our previous conversation"
 
-If the current question refers to something mentioned earlier
-(using words like "it", "they", "that", "he", etc.),
-use the previous conversation to determine what the user means.
+Only use previous context to understand what the user means and answer the current question.
 
-Use the retrieved document information whenever possible.
+Use the document information only when it is relevant to the question.
+
+If the user changes topics, answer the new topic normally.
 
 Previous conversation:
 ${conversation}
 
-Retrieved document information:
+Relevant document information:
 ${context}
 
 Current user question:
 ${question}
 
-Answer:
+Give a direct, natural answer to the user's question.
 `
         }
     );
@@ -97,10 +103,7 @@ const sources = [
     )
 ];
 
-return {
-    answer,
-    sources
-};
+return answer;
 }
 
 

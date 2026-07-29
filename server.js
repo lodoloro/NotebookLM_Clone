@@ -147,24 +147,30 @@ app.post("/ask", async (req, res) => {
 
         const question = req.body.question;
 
-        const result = await askQuestion(
-            question,
-            conversationHistory
-        );
+const answer = await askQuestion(
+    question,
+    conversationHistory
+);
+
+
 
         conversationHistory.push({
             role: "user",
             content: question
         });
 
-        conversationHistory.push({
-            role: "assistant",
-            content: result.answer
-        });
+conversationHistory.push({
+    role: "assistant",
+    content: answer
+});
+
+res.json({
+    answer
+});
 
         console.log(conversationHistory);
 
-        res.json(result);
+
 
     } catch (error) {
 

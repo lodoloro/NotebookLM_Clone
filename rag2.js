@@ -80,6 +80,13 @@ Use the document information only when it is relevant to the question.
 
 If the user changes topics, answer the new topic normally.
 
+IMPORTANT RULES:
+- The uploaded document information is the primary source of truth.
+- Always check the document information before answering.
+- If the answer exists in the documents use the documents as the most important source of info along with some other context if you understand and can add anything, however if its not you may answer the question freely.
+- Do not replace document information with your own general knowledge.
+- Do not mention that you are using documents unless the user asks.
+
 Previous conversation:
 ${conversation}
 

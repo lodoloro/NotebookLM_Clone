@@ -1,0 +1,640 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+        font-family: "Ubuntu", system-ui;
+
+}
+
+:root{
+
+        font-family: "Ubuntu", system-ui;
+            cursor: default;
+
+
+    --background:#0B1118;
+
+    --sidebar:#121923;
+
+    --panel:#171F2B;
+
+    --panel-light:#1E2937;
+
+    --border:#2B3647;
+
+    --text:#F3F6FA;
+
+    --secondary:#95A2B4;
+
+    --accent:#4F8CFF;
+
+    --accent-hover:#73A4FF;
+
+    --success:#38D67A;
+
+}
+
+body{
+
+    background:
+
+        radial-gradient(circle at top left,#171736,transparent 30%),
+
+        radial-gradient(circle at bottom right,#1b162922,transparent 20%),
+
+        #0B1118;
+
+    color:var(--text);
+
+    overflow:hidden;
+
+}
+
+.app{
+
+    display:flex;
+
+    height:100vh;
+
+}
+
+.sidebar{
+    
+
+    width:340px;
+
+background:rgba(18,25,35,.70);
+
+backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-right:1px solid rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.05);
+    border-right:1px solid var(--border);
+
+    padding:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo-icon{
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:16px;
+
+    background:var(--accent);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+    color:white;
+
+    box-shadow:0 0 25px rgba(79,140,255,.3);
+
+}
+
+.logo h2{
+
+    font-size:22px;
+
+}
+
+.logo p{
+
+    color:var(--secondary);
+
+    margin-top:3px;
+
+}
+
+.upload-box{
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:18px;
+
+    background:rgba(23,31,43,.90);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #4f8cff,
+
+        #7a5cff
+
+    );
+
+    color:white;
+
+    border-radius:12px;
+
+    padding:12px 18px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 0 30px
+
+        rgba(79,140,255,.45);
+
+}
+
+input{
+
+    width:100%;
+
+    background:var(--panel-light);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    margin-bottom:12px;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+input:focus{
+
+    border-color:var(--accent);
+
+}
+
+.chat{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.chat-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:28px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--secondary);
+
+}
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    background:var(--success);
+
+    border-radius:50%;
+
+}
+
+#response{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:40px;
+
+}
+
+.welcome{
+
+    text-align:center;
+
+    margin-top:15vh;
+
+}
+
+.welcome h2{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.welcome p{
+
+    color:var(--secondary);
+
+    font-size:18px;
+
+}
+
+.chat-input{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:24px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.chat-input input{
+
+    margin:0;
+
+    flex:1;
+
+}
+
+.ubuntu-logo {
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: "Ubuntu";
+}
+
+#chatMessages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+
+}
+
+.message{
+
+    display:flex;
+
+        animation:pop .25s ease;
+
+}
+
+.user{
+
+    justify-content:flex-end;
+
+}
+
+.assistant{
+
+    justify-content:flex-start;
+
+}
+
+.bubble{
+
+    max-width:70%;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    line-height:1.6;
+
+}
+
+.user .bubble{
+
+    background:var(--accent);
+
+    color:white;
+
+}
+
+.assistant .bubble{
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+}
+.document{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:12px 16px;
+
+}
+.document-name{
+
+    flex:1;
+
+    min-width:0;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+}
+.document:hover{
+
+    background:rgba(79,140,255,.08);
+
+    border-color:#4f8cff;
+    cursor: default
+
+}
+.chooseFileButton{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:12px 20px;
+
+    margin-left: 5px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    transition:.25s;
+
+}
+
+.chooseFileButton:hover{
+
+    transform:translateY(-2px);
+
+    border-color:var(--accent);
+
+}
+
+.uploadbuttonpadding {
+    align-items:right;
+    justify-content:right;
+    margin-left:15px;
+}
+
+@keyframes bgMove{
+
+    0%{
+
+        background-position:0% 0%;
+
+    }
+
+    50%{
+
+        background-position:100% 100%;
+
+    }
+
+    100%{
+
+        background-position:0% 0%;
+
+    }
+
+}
+
+@keyframes pop{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+#dragOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(10,10,15,.75);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 999;
+
+}
+
+
+#dragOverlay div {
+
+    padding: 50px;
+
+    border-radius: 25px;
+
+    border: 2px dashed #4f8cff;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.05);
+
+    animation: dragPulse 1.5s infinite;
+
+}
+
+
+#dragOverlay h2 {
+
+    margin-top: 15px;
+
+}
+
+
+@keyframes dragPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+.thinking{
+
+    display:flex;
+
+    gap:6px;
+
+}
+
+.thinking span{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    animation:bounce 1.2s infinite;
+
+}
+
+.thinking span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.thinking span:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+@keyframes bounce{
+
+    0%,80%,100%{
+
+        transform:translateY(0);
+
+        opacity:.5;
+
+    }
+
+    40%{
+
+        transform:translateY(-5px);
+
+        opacity:1;
+
+    }
+
+}
+.sources{
+
+    margin-top:12px;
+
+    padding-top:10px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#9fb3d9;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}

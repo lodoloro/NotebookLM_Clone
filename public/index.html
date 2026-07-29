@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NERO AI</title>
+
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+<div class="logo-icon">
+
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+
+        <path 
+            d="M20 80V20L80 80V20"
+            fill="none"
+            stroke="white"
+            stroke-width="12"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+
+    </svg>
+
+</div>
+            <div>
+
+                <h2 class="ubuntu-logo">NERO AI</h2>
+                <p>Knowledge Assistant</p>
+
+            </div>
+
+        </div>
+
+        <div class="upload-box">
+
+            <h3 style="margin-left: 0px;" >Upload PDF</h3>
+
+            <br>
+
+            <input
+    type="file"
+    id="pdfFile"
+    accept=".pdf,.png,.jpg,.jpeg,.webp"
+    hidden
+>
+
+<label
+    for="pdfFile"
+    class="chooseFileButton"
+>
+
+Choose File
+
+</label>
+
+            <button class="uploadbuttonpadding" onclick="uploadFile(document.getElementById('pdfFile').files[0])">
+    Upload
+</button>
+<br><p></p>
+            <p id="uploadStatus" style="margin-top: 10px;"></p>
+
+        </div>
+
+        <h3 class="documents-title">
+
+            Documents
+
+        </h3>
+
+        <div id="documentList">
+
+        </div>
+
+    </aside>
+
+
+    <main class="chat">
+
+        <div class="chat-header">
+
+            <div>
+
+                <h1>NERO AI</h1>
+                <p>Local AI Document Assistant</p>
+
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Local
+
+            </div>
+
+        </div>
+
+
+<div id="chatMessages">
+
+    <div class="welcome">
+
+        <h2>Welcome 👋</h2>
+
+        <p>
+            Upload documents on the left and ask me anything.
+        </p>
+
+    </div>
+
+</div>
+
+
+        <div class="chat-input">
+
+            <input
+                id="question"
+                placeholder="Ask anything..."
+            >
+
+            <button onclick="sendQuestion()">
+
+                Send →
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+<div id="dragOverlay">
+    <div>
+        📄
+        <h2>Drop files to upload</h2>
+        <p>PDFs and images supported</p>
+    </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+
+</html>

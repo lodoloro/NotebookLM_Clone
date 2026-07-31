@@ -23,4 +23,4 @@ async function extractPDF(path) {
 }
 
 
-extractPDF("./example.pdf");
+extractPDF("./test/example.pdf");

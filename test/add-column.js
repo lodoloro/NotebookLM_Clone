@@ -1,4 +1,4 @@
-const db = require("./database");
+const db = require("../database");
 
 db.run(
     "ALTER TABLE documents ADD COLUMN filepath TEXT",

@@ -14,6 +14,7 @@ Repo to Host Dean Lockyers RAG Web App
 * Dragging and dropping
 * Easy to use UI
 * Ai memory
+* Camera Option
 
 ---
 

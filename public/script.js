@@ -288,3 +288,72 @@ fetch("/new-chat", {
     method: "POST"
 });
 
+let cameraStream;
+
+async function openCamera(){
+
+    cameraStream =
+        await navigator.mediaDevices.getUserMedia({
+
+            video:{
+                facingMode:"environment"
+            }
+
+        });
+
+    const video = document.getElementById("cameraVideo");
+
+    video.srcObject = cameraStream;
+
+    document.getElementById("cameraModal").style.display = "flex";
+
+}
+
+function closeCamera(){
+
+    if(cameraStream){
+
+        cameraStream.getTracks().forEach(track=>track.stop());
+
+    }
+
+    document.getElementById("cameraModal").style.display="none";
+
+}
+
+async function capturePhoto(){
+
+    const video = document.getElementById("cameraVideo");
+
+    const canvas = document.getElementById("cameraCanvas");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    canvas
+        .getContext("2d")
+        .drawImage(video,0,0);
+
+    canvas.toBlob(async blob=>{
+
+        const file = new File(
+
+            [blob],
+
+            "camera_scan.png",
+
+            {
+
+                type:"image/png"
+
+            }
+
+        );
+
+        closeCamera();
+
+        await uploadFile(file);
+
+    });
+
+}

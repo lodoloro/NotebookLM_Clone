@@ -48,7 +48,7 @@
 
         <div class="upload-box">
 
-            <h3 style="margin-left: 0px;" >Upload PDF</h3>
+            <h3 style="margin-left: 5px;" >Upload Document</h3>
 
             <br>
 
@@ -64,13 +64,19 @@
     class="chooseFileButton"
 >
 
+
 Choose File
 
 </label>
 
+
+
             <button class="uploadbuttonpadding" onclick="uploadFile(document.getElementById('pdfFile').files[0])">
     Upload
 </button>
+<center><button class="cameraButton" onclick="openCamera()">
+    📷 Scan Document
+</button></center>
 <br><p></p>
             <p id="uploadStatus" style="margin-top: 10px;"></p>
 
@@ -118,7 +124,7 @@ Choose File
         <h2>Welcome 👋</h2>
 
         <p>
-            Upload documents on the left and ask me anything.
+            Drag and drop files or Upload documents on the left and ask me anything.
         </p>
 
     </div>
@@ -152,6 +158,30 @@ Choose File
     </div>
 </div>
 <script src="script.js"></script>
+
+<div id="cameraModal" class="cameraModal">
+
+    <div class="cameraWindow">
+
+        <video id="cameraVideo" autoplay playsinline></video>
+
+        <canvas id="cameraCanvas" hidden></canvas>
+
+        <div class="cameraButtons">
+
+            <button onclick="capturePhoto()">
+                Capture
+            </button>
+
+            <button onclick="closeCamera()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 

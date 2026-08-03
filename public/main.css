@@ -638,3 +638,58 @@ input:focus{
     line-height:1.7;
 
 }
+.cameraModal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.cameraWindow{
+
+    background:#181818;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+#cameraVideo{
+
+    width:700px;
+
+    max-width:90vw;
+
+    border-radius:14px;
+
+}
+
+.cameraButtons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:15px;
+
+}
+
+.cameraButton {
+    margin-top: 20px;
+    margin-bottom: -25px;
+        margin-right: 20px;
+}

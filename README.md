@@ -1,5 +1,13 @@
 # NotebookLM_Clone
-Repo to Host Dean Lockyers RAG Web App
+Repo to Host Dean Lockyers Offline RAG Web App
+
+---
+
+# Welcome!
+This is my Offline ai document assistant web app
+
+### Why offline?
+Offline means greater security and means that its harder for other people to access
 
 ---
 

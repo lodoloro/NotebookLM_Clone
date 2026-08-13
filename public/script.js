@@ -368,6 +368,7 @@ async function capturePhoto(){
 
     });
 
+<<<<<<< HEAD
 }
 async function previewDocument(id){
 
@@ -419,4 +420,6 @@ function closePreview(){
     document.getElementById("previewModal")
         .style.display = "none";
 
+=======
+>>>>>>> 8083a61cad4e2a94b9c151a9617873cb0ad82054
 }

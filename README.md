@@ -28,6 +28,8 @@ Offline means greater security and means that its harder for other people to acc
 
 # Requirements
 
+These are some things youll need to do to utilize this project
+
 ## Node.js
 If you don't already have it, download and install Node.js:
 

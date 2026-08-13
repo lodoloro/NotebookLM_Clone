@@ -15,7 +15,8 @@ db.run(`
     CREATE TABLE IF NOT EXISTS documents (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         filename TEXT,
-        content TEXT
+        content TEXT,
+        filepath TEXT
     )
 `);
 

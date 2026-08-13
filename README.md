@@ -42,6 +42,8 @@ Run these two commands in the root folder:
  npm -v
  ```
 
+If they are installed it should give you some version numbers as an output
+
 ## Ollama
 
 Install Ollama if you dont already have it:

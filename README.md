@@ -1,9 +1,7 @@
 # NotebookLM_Clone
 Repo to Host Dean Lockyers Offline RAG Web App
 
----
-
-# Welcome!
+## Welcome!
 This is my Offline ai document assistant web app
 
 ### Why offline?
@@ -28,6 +26,7 @@ Offline means greater security and means that its harder for other people to acc
 
 # Requirements
 
+
 ## Node.js
 If you don't already have it, download and install Node.js:
 
@@ -41,6 +40,8 @@ Run these two commands in the root folder:
  ```bash
  npm -v
  ```
+
+If they are installed it should give you some version numbers as an output
 
 ## Ollama
 

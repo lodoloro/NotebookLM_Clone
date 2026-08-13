@@ -400,27 +400,56 @@ input:focus{
 .document{
 
     display:flex;
-
     align-items:center;
 
-    justify-content:space-between;
+    width:100%;
+    box-sizing:border-box;
 
     gap:12px;
-
     padding:12px 16px;
 
 }
+
 .document-name{
 
-    flex:1;
-
+    flex:1 1 auto;
     min-width:0;
 
     overflow:hidden;
-
+    text-overflow:ellipsis;
     white-space:nowrap;
 
-    text-overflow:ellipsis;
+}
+
+.documentButtons{
+
+    display:flex;
+    gap:8px;
+
+    flex:0 0 auto;
+
+}
+
+.documentButtons button{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+    line-height:1;
+
+    padding:0;
+
+    border:none;
+    border-radius:10px;
+
+    cursor:pointer;
+
+    flex-shrink:0;
 
 }
 .document:hover{
@@ -636,5 +665,190 @@ input:focus{
     font-size:13px;
 
     line-height:1.7;
+
+}
+.cameraModal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.cameraWindow{
+
+    background:#181818;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+#cameraVideo{
+
+    width:700px;
+
+    max-width:90vw;
+
+    border-radius:14px;
+
+}
+
+.cameraButtons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:15px;
+
+}
+
+.cameraButton {
+    margin-top: 20px;
+    margin-bottom: -25px;
+        margin-right: 20px;
+}
+.previewModal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.8);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.previewWindow{
+
+    width:90vw;
+
+    height:90vh;
+
+    background:#181818;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.previewImage{
+
+    max-width:100%;
+    max-height:100%;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+}
+
+.previewWindow{
+
+    width:90vw;
+    height:90vh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.closePreview{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    z-index:2;
+
+}
+#previewContent{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+    height:100%;
+
+}
+#previewContent{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+.imagePreview{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.pdfPreview{
+
+    width:100%;
+    height:100%;
+
+}
+
+.previewImage{
+
+    max-width:100%;
+    max-height:100%;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+}
+
+.previewPDF{
+
+    width:100%;
+    height:100%;
+
+    border:none;
 
 }

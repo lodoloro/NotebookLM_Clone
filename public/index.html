@@ -2,11 +2,14 @@
 <html lang="en">
 
 <head>
-
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NERO AI</title>
+    <title>BAY ROBERTS AI</title>
 
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
@@ -23,24 +26,30 @@
 
 <div class="logo-icon">
 
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 
-        <path 
-            d="M20 80V20L80 80V20"
-            fill="none"
-            stroke="white"
-            stroke-width="12"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        />
+    <path
+        d="M25 80V20H52
+           C68 20 76 27 76 38
+           C76 45 71 50 63 52
+           C72 54 78 59 78 68
+           C78 76 69 80 53 80H25ZM25 52H51
+           C61 52 67 47 67 39
+           C67 32 61 28 51 28H25"
+        fill="none"
+        stroke="white"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
 
-    </svg>
+</svg>
 
 </div>
             <div>
 
-                <h2 class="ubuntu-logo">NERO AI</h2>
-                <p>Knowledge Assistant</p>
+                <h2 class="ubuntu-logo">BAY ROBERTS AI</h2>
+                <p>Offline AI Document Assistant</p>
 
             </div>
 
@@ -48,7 +57,7 @@
 
         <div class="upload-box">
 
-            <h3 style="margin-left: 0px;" >Upload PDF</h3>
+            <h3 style="margin-left: 5px;" >Upload Document</h3>
 
             <br>
 
@@ -64,13 +73,19 @@
     class="chooseFileButton"
 >
 
+
 Choose File
 
 </label>
 
+
+
             <button class="uploadbuttonpadding" onclick="uploadFile(document.getElementById('pdfFile').files[0])">
     Upload
 </button>
+<center><button class="cameraButton" onclick="openCamera()">
+    📷 Scan Document
+</button></center>
 <br><p></p>
             <p id="uploadStatus" style="margin-top: 10px;"></p>
 
@@ -95,9 +110,6 @@ Choose File
 
             <div>
 
-                <h1>NERO AI</h1>
-                <p>Local AI Document Assistant</p>
-
             </div>
 
             <div class="status">
@@ -118,7 +130,7 @@ Choose File
         <h2>Welcome 👋</h2>
 
         <p>
-            Upload documents on the left and ask me anything.
+            Drag and drop files or Upload documents on the left and ask me anything.
         </p>
 
     </div>
@@ -152,6 +164,47 @@ Choose File
     </div>
 </div>
 <script src="script.js"></script>
+
+<div id="cameraModal" class="cameraModal">
+
+    <div class="cameraWindow">
+
+        <video id="cameraVideo" autoplay playsinline></video>
+
+        <canvas id="cameraCanvas" hidden></canvas>
+
+        <div class="cameraButtons">
+
+            <button onclick="capturePhoto()">
+                Capture
+            </button>
+
+            <button onclick="closeCamera()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="previewModal" class="previewModal">
+
+    <div class="previewWindow">
+
+        <button
+            class="closePreview"
+            onclick="closePreview()">
+
+            ✕
+
+        </button>
+
+        <div id="previewContent"></div>
+
+    </div>
+
+</div>
 
 </body>
 

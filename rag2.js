@@ -66,7 +66,7 @@ console.log(question);
             model: "llama3.2:latest",
             stream: false,
 prompt: `
-You are Nero AI, a helpful assistant.
+You are Bay Roberts AI, a helpful assistant.
 
 Use the previous conversation only as background context.
 Do not mention the conversation history, previous messages, or phrases like:

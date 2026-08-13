@@ -148,13 +148,25 @@ async function loadDocuments() {
         div.className = "document";
 
 div.innerHTML = `
-    <span class="document-name" title="${doc.filename}">
+<div class="document">
+
+    <span class="document-name">
         ${doc.filename}
     </span>
 
-    <button onclick="deleteDocument(${doc.id})">
-        🗑️
-    </button>
+    <div class="documentButtons">
+
+        <button onclick="previewDocument(${doc.id})">
+            👁
+        </button>
+
+        <button onclick="deleteDocument(${doc.id})">
+            🗑️
+        </button>
+
+    </div>
+
+</div>
 `;
 
         list.appendChild(div);
@@ -288,3 +300,123 @@ fetch("/new-chat", {
     method: "POST"
 });
 
+let cameraStream;
+
+async function openCamera(){
+
+    cameraStream =
+        await navigator.mediaDevices.getUserMedia({
+
+            video:{
+                facingMode:"environment"
+            }
+
+        });
+
+    const video = document.getElementById("cameraVideo");
+
+    video.srcObject = cameraStream;
+
+    document.getElementById("cameraModal").style.display = "flex";
+
+}
+
+function closeCamera(){
+
+    if(cameraStream){
+
+        cameraStream.getTracks().forEach(track=>track.stop());
+
+    }
+
+    document.getElementById("cameraModal").style.display="none";
+
+}
+
+async function capturePhoto(){
+
+    const video = document.getElementById("cameraVideo");
+
+    const canvas = document.getElementById("cameraCanvas");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    canvas
+        .getContext("2d")
+        .drawImage(video,0,0);
+
+    canvas.toBlob(async blob=>{
+
+        const file = new File(
+
+            [blob],
+
+            "camera_scan.png",
+
+            {
+
+                type:"image/png"
+
+            }
+
+        );
+
+        closeCamera();
+
+        await uploadFile(file);
+
+    });
+
+}
+async function previewDocument(id){
+
+    const response = await fetch(`/documents/${id}`);
+
+    const doc = await response.json();
+
+    const extension =
+        doc.filename.split(".").pop().toLowerCase();
+
+    const preview =
+        document.getElementById("previewContent");
+
+    if([
+        "png",
+        "jpg",
+        "jpeg",
+        "webp"
+    ].includes(extension)){
+
+preview.className = "imagePreview";
+
+preview.innerHTML = `
+    <img
+        src="/${doc.filepath}"
+        class="previewImage">
+`;
+
+    }else{
+
+preview.className = "pdfPreview";
+
+preview.innerHTML = `
+    <iframe
+        src="/${doc.filepath}"
+        class="previewPDF">
+    </iframe>
+`;
+
+    }
+
+    document.getElementById("previewModal")
+        .style.display = "flex";
+
+}
+
+function closePreview(){
+
+    document.getElementById("previewModal")
+        .style.display = "none";
+
+}

@@ -9,6 +9,7 @@ const uploadToQdrant = require("./upload-to-qdrant");
 const { QdrantClient } = require("@qdrant/js-client-rest");
 const Tesseract = require("tesseract.js");
 
+
 let conversationHistory = [];
 
 const qdrant = new QdrantClient({
@@ -20,6 +21,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "./public")));
+app.use("/uploads", express.static("uploads"));
 
 
 // Home
@@ -36,7 +38,7 @@ db.all("SELECT * FROM documents", [], (err, rows) => {
 app.get("/documents", (req, res) => {
 
     db.all(
-        "SELECT id, filename FROM documents",
+        "SELECT id, filename, filepath FROM documents",
         [],
         (err, rows) => {
 
@@ -47,6 +49,36 @@ app.get("/documents", (req, res) => {
             }
 
             res.json(rows);
+        }
+    );
+
+});
+
+app.get("/documents/:id", (req, res) => {
+
+    db.get(
+        "SELECT * FROM documents WHERE id = ?",
+        [req.params.id],
+        (err, row) => {
+
+            if (err) {
+
+                return res.status(500).json({
+                    error: err.message
+                });
+
+            }
+
+            if (!row) {
+
+                return res.status(404).json({
+                    error: "Document not found"
+                });
+
+            }
+
+            res.json(row);
+
         }
     );
 
@@ -97,10 +129,10 @@ await qdrant.delete("documents", {
         ]
     }
 });
-const filePath = path.join(__dirname, "uploads", row.filename);
 
-if (fs.existsSync(filePath)) {
-    fs.unlinkSync(filePath);
+
+if (row.filepath && fs.existsSync(row.filepath)) {
+    fs.unlinkSync(row.filepath);
 }
 
                 // Delete from SQLite
@@ -186,8 +218,30 @@ res.json({
 
 
 // Upload PDF
+const crypto = require("crypto");
+
+const storage = multer.diskStorage({
+
+    destination: (req, file, cb) => {
+
+        cb(null, "uploads/");
+
+    },
+
+    filename: (req, file, cb) => {
+
+        const uniqueName =
+            crypto.randomBytes(16).toString("hex") +
+            path.extname(file.originalname);
+
+        cb(null, uniqueName);
+
+    }
+
+});
+
 const upload = multer({
-    dest: "uploads/"
+    storage
 });
 
 
@@ -263,7 +317,7 @@ await uploadToQdrant(
     req.file.originalname,
     documentId
 );
-                fs.unlinkSync(req.file.path);
+                //fs.unlinkSync(req.file.path); this deletes after processing
 
 
                 res.json({
@@ -285,6 +339,8 @@ await uploadToQdrant(
     }
 
 });
+
+
 app.post("/new-chat", (req, res) => {
 
     conversationHistory.length = 0;

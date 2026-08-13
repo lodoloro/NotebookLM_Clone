@@ -191,16 +191,14 @@ IMPORTANT DOCUMENT RULES:
 
 IMAGE AND OCR RULES:
 
-- Uploaded PDFs and images can have text extracted from them.
-- Text associated with an image file is OCR-extracted text from that image.
-- Treat OCR-extracted text as the actual textual content of the image.
-- If the user asks what an uploaded image says, provide the relevant text from the OCR.
-- If the user asks what is in an uploaded image, describe the content using the OCR text provided in the context.
-- When asked what is in a document or image, do not merely list keywords or random phrases from the context.
-- Give the complete relevant information available in the context.
-- If the OCR text is short, provide the full OCR text rather than summarizing it.
-- Do not invent visual details that are not present in the context.
-- Do not say that you cannot access or read an image when OCR text is provided.
+- Uploaded images may contain OCR-extracted text.
+- Treat OCR text as the text contained in the image.
+- If the user asks "what does the image say", "what does it say", or similar, provide the actual OCR text directly.
+- Do not paraphrase, interpret, or summarize OCR text unless the user asks for an explanation or summary.
+- Do not add assumptions about organizations, people, events, acronyms, or meanings that are not explicitly present in the OCR text.
+- If the OCR text is short, give the complete OCR text.
+- If the user asks "what is in the image", describe what can be determined from the available OCR text, but do not invent visual details.
+- Do not say that you cannot read an image when OCR text is available.
 
 RESPONSE STYLE:
 
